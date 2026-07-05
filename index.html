@@ -32,13 +32,13 @@
         .page{position:relative;z-index:1}
         .hero{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 20px 100px;position:relative}
 
-        /* ===== LOGO AREA - Yahan apni image daalo ===== */
+        /* ===== LOGO AREA ===== */
+        .logo-wrap{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:22px;animation:fadeDown .7s ease-out}
         .logo-area{
-            width:110px;height:110px;margin-bottom:22px;
+            width:110px;height:110px;
             border-radius:50%;overflow:hidden;
             display:flex;align-items:center;justify-content:center;
             position:relative;
-            animation:fadeDown .7s ease-out;
             box-shadow:0 4px 30px rgba(38,161,123,0.3),0 0 60px rgba(38,161,123,0.1);
             border:3px solid rgba(255,255,255,0.1);
         }
@@ -53,6 +53,8 @@
         }
         .logo-area::before{width:100px;height:100px}
         .logo-area::after{width:100px;height:100px;animation-delay:1s}
+        .brand-name{font-size:16px;font-weight:800;letter-spacing:3px;color:#fff;text-transform:uppercase}
+        .brand-name span{color:#00d26a}
 
         /* Placeholder - ye tab tak dikhega jab tak image na daalo */
         .logo-placeholder{
@@ -158,7 +160,7 @@
         fbq('init','856259333911560');
         fbq('track','subscriber');
     </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=856259333911560&ev=PageView&noscript=1"/></noscript>
 
     <div class="bg-layer"></div>
     <div class="grid-bg"></div>
@@ -168,9 +170,11 @@
         <section class="hero">
 
             <!-- ===== LOGO AREA ===== -->
-            <!-- Apni PNG image yahan daalo - filename change karo -->
-            <div class="logo-area">
-                <img src="logo.jpg" alt="BestPay Logo">
+            <div class="logo-wrap">
+                <div class="logo-area">
+                    <img src="logo.jpg" alt="BestPay Logo">
+                </div>
+                <div class="brand-name">Best<span>Pay</span></div>
             </div>
 
             <!-- Live -->
@@ -260,4 +264,6 @@
         })();
     </script>
 </body>
+</html>
+
 </html>
