@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BestPay - USDT Trading | Best Rates</title>
+    <meta name="description" content="BestPay USDT Price Update - Trade USDT at best rates.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+        html{scroll-behavior:smooth}
+        body{font-family:'Inter',sans-serif;background:#06060f;color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+        .bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;
+            background:
+                radial-gradient(circle at 15% 15%,rgba(38,161,123,0.12) 0%,transparent 45%),
+                radial-gradient(circle at 85% 20%,rgba(0,136,204,0.1) 0%,transparent 40%),
+                radial-gradient(circle at 50% 80%,rgba(170,68,255,0.08) 0%,transparent 40%),
+                radial-gradient(circle at 80% 70%,rgba(255,170,0,0.07) 0%,transparent 35%),
+                radial-gradient(circle at 20% 90%,rgba(255,50,80,0.06) 0%,transparent 35%);
+        }
+        .grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;
+            background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),
+            linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);
+            background-size:50px 50px;
+        }
+
+        .particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+        .particle{position:absolute;border-radius:50%;animation:rise linear infinite}
+        @keyframes rise{
+            0%{transform:translateY(100vh) scale(0);opacity:0}
+            10%{opacity:1}
+            90%{opacity:1}
+            100%{transform:translateY(-10vh) scale(1);opacity:0}
+        }
+
+        .page{position:relative;z-index:1}
+
+        .hero{
+            min-height:100dvh;display:flex;flex-direction:column;
+            align-items:center;justify-content:center;text-align:center;
+            padding:24px 20px 100px;position:relative;
+        }
+
+        /* Brand */
+        .brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:18px;animation:fadeDown .7s ease-out}
+        .brand-logo-box{
+            width:68px;height:68px;border-radius:16px;
+            background:linear-gradient(135deg,#FFD700,#FF8C00,#FF5E00);
+            display:flex;align-items:center;justify-content:center;
+            position:relative;overflow:hidden;
+            box-shadow:0 6px 25px rgba(255,140,50,0.45);
+            animation:logo-float 3s ease-in-out infinite;
+        }
+        .brand-logo-box::after{content:'';position:absolute;top:-18px;right:-18px;width:45px;height:45px;border-radius:50%;background:rgba(255,255,255,0.12)}
+        .brand-b{font-size:34px;font-weight:900;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,0.2);line-height:1;z-index:1}
+        .brand-hash{position:absolute;top:9px;right:9px;font-size:9px;font-weight:800;color:rgba(255,255,255,0.5);z-index:1;transform:rotate(15deg)}
+        .brand-name{font-size:12px;font-weight:700;letter-spacing:4px;color:#ff8c32;text-transform:uppercase}
+        @keyframes logo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+        /* USDT Coin */
+        .usdt-wrap{position:relative;width:100px;height:100px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+        .usdt-wrap::before,.usdt-wrap::after{content:'';position:absolute;top:50%;left:50%;border-radius:50%;border:2px solid #26a17b;transform:translate(-50%,-50%);animation:pulse-ring 2s ease-out infinite}
+        .usdt-wrap::before{width:80px;height:80px}
+        .usdt-wrap::after{width:80px;height:80px;animation-delay:1s}
+        .usdt-coin{
+            position:relative;z-index:2;width:72px;height:72px;border-radius:50%;
+            background:linear-gradient(145deg,#34d399,#26a17b,#1a8a65);
+            display:flex;align-items:center;justify-content:center;
+            box-shadow:0 4px 30px rgba(38,161,123,0.5),0 0 50px rgba(38,161,123,0.15),inset 0 -3px 8px rgba(0,0,0,0.25);
+            animation:coin-bounce 3s ease-in-out infinite;
+            border:3px solid rgba(255,255,255,0.12);
+        }
+        .usdt-coin svg{width:34px;height:34px;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.2))}
+        @keyframes pulse-ring{0%{width:70px;height:70px;opacity:.7}100%{width:120px;height:120px;opacity:0}}
+        @keyframes coin-bounce{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.07) translateY(-5px)}}
+
+        /* Live Badge */
+        .live-badge{
+            display:inline-flex;align-items:center;gap:8px;padding:6px 18px;border-radius:50px;
+            background:rgba(255,50,50,0.12);border:1px solid rgba(255,50,50,0.35);
+            font-size:11px;font-weight:700;color:#ff4444;text-transform:uppercase;letter-spacing:2px;
+            margin-bottom:16px;animation:fadeDown .7s ease-out .2s both,glow-red 2s ease-in-out infinite;
+        }
+        .live-dot{width:6px;height:6px;border-radius:50%;background:#ff4444;animation:blink 1s ease-in-out infinite}
+        @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+        @keyframes glow-red{0%,100%{box-shadow:0 0 8px rgba(255,50,50,0.3)}50%{box-shadow:0 0 20px rgba(255,50,50,0.5)}}
+
+        h1{
+            font-size:clamp(30px,8vw,54px);font-weight:900;line-height:1.05;margin-bottom:12px;
+            animation:fadeUp .7s ease-out .3s both;
+        }
+        h1 .white{color:#fff}
+        h1 .green{
+            background:linear-gradient(135deg,#34d399,#00d26a,#00ff88);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+        h1 .gold{
+            background:linear-gradient(135deg,#FFD700,#FFA500);
+            -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+        .sub{font-size:clamp(13px,2.5vw,15px);color:#555;max-width:360px;line-height:1.7;margin-bottom:24px;animation:fadeUp .7s ease-out .4s both}
+
+        @keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:translateY(0)}}
+
+        /* Price Card */
+        .price-card{
+            position:relative;width:100%;max-width:360px;
+            background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
+            border-radius:18px;padding:22px 18px;margin-bottom:14px;
+            backdrop-filter:blur(20px);animation:fadeUp .7s ease-out .5s both;
+        }
+        .price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#26a17b,#0088cc,#aa44ff,#ff6b35,#FFD700);border-radius:18px 18px 0 0}
+        .price-label{font-size:11px;color:#555;text-transform:uppercase;letter-spacing:3px;margin-bottom:6px}
+        .price-row{display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:4px}
+        .price-row .cur{font-size:16px;color:#777;font-weight:600}
+        .price-row .amt{font-size:44px;font-weight:900;line-height:1;
+            background:linear-gradient(135deg,#34d399,#00d26a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+        }
+        .price-row .unit{font-size:14px;color:#555;font-weight:600}
+        .price-note{font-size:11px;color:#444;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:6px}
+        .price-change{display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:5px;background:rgba(0,210,106,0.1);color:#00d26a;font-size:11px;font-weight:700}
+
+        /* Urgency */
+        .urgency{
+            display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:360px;
+            padding:10px 14px;border-radius:10px;margin-bottom:22px;
+            background:linear-gradient(135deg,rgba(255,107,53,0.1),rgba(255,50,80,0.08));
+            border:1px solid rgba(255,107,53,0.25);animation:fadeUp .7s ease-out .6s both;
+        }
+        .urgency .fire{font-size:16px}
+        .urgency .text{font-size:12px;color:#ff6b35;font-weight:600}
+
+        /* Features */
+        .features{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:100%;max-width:360px;margin-bottom:24px;animation:fadeUp .7s ease-out .65s both}
+        .feature{
+            display:flex;flex-direction:column;align-items:center;gap:5px;
+            padding:12px 6px;border-radius:12px;
+            background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.05);
+            transition:all .2s;cursor:default;
+        }
+        .feature:active{transform:scale(.95)}
+        .feature .fi{font-size:22px;line-height:1}
+        .feature .ft{font-size:10px;color:#888;text-align:center;line-height:1.3}
+
+        .feature:nth-child(1) .fi{filter:drop-shadow(0 0 4px rgba(0,210,106,0.5))}
+        .feature:nth-child(2) .fi{filter:drop-shadow(0 0 4px rgba(0,136,204,0.5))}
+        .feature:nth-child(3) .fi{filter:drop-shadow(0 0 4px rgba(255,170,0,0.5))}
+        .feature:nth-child(4) .fi{filter:drop-shadow(0 0 4px rgba(170,68,255,0.5))}
+        .feature:nth-child(5) .fi{filter:drop-shadow(0 0 4px rgba(255,50,80,0.5))}
+        .feature:nth-child(6) .fi{filter:drop-shadow(0 0 4px rgba(255,215,0,0.5))}
+
+        .feature:nth-child(1){border-color:rgba(0,210,106,0.12)}
+        .feature:nth-child(2){border-color:rgba(0,136,204,0.12)}
+        .feature:nth-child(3){border-color:rgba(255,170,0,0.12)}
+        .feature:nth-child(4){border-color:rgba(170,68,255,0.12)}
+        .feature:nth-child(5){border-color:rgba(255,50,80,0.12)}
+        .feature:nth-child(6){border-color:rgba(255,215,0,0.12)}
+
+        /* CTA */
+        .cta-section{display:flex;flex-direction:column;align-items:center;width:100%;max-width:360px;animation:fadeUp .7s ease-out .75s both}
+        .cta-glow{position:relative;width:100%;display:flex;justify-content:center}
+        .cta-glow::before{
+            content:'';position:absolute;top:50%;left:50%;width:75%;height:56px;border-radius:28px;
+            background:linear-gradient(135deg,#00d26a,#0088cc);
+            transform:translate(-50%,-50%);filter:blur(18px);opacity:.35;
+            animation:ctaPulse 2s ease-in-out infinite;
+        }
+        @keyframes ctaPulse{0%,100%{opacity:.25;transform:translate(-50%,-50%) scaleX(1)}50%{opacity:.45;transform:translate(-50%,-50%) scaleX(1.04)}}
+
+        .btn-main{
+            position:relative;z-index:2;width:100%;max-width:300px;padding:16px 22px;
+            border-radius:14px;border:none;cursor:pointer;
+            background:linear-gradient(135deg,#00b858,#009944,#00aa55);
+            color:#fff;font-size:16px;font-weight:800;
+            display:flex;align-items:center;justify-content:center;gap:10px;
+            text-decoration:none;letter-spacing:.5px;
+            box-shadow:0 4px 20px rgba(0,210,106,0.35);
+            transition:all .2s;
+        }
+        .btn-main:active{transform:scale(.97)}
+        .btn-main svg{width:22px;height:22px;fill:#fff;flex-shrink:0}
+
+        .btn-secondary{
+            position:relative;z-index:2;width:100%;max-width:300px;padding:12px 22px;
+            border-radius:14px;border:1px solid rgba(255,255,255,0.1);
+            background:rgba(255,255,255,0.04);cursor:pointer;
+            color:#aaa;font-size:13px;font-weight:600;
+            display:flex;align-items:center;justify-content:center;gap:8px;
+            text-decoration:none;margin-top:10px;transition:all .2s;
+        }
+        .btn-secondary:active{transform:scale(.97);background:rgba(255,255,255,0.08)}
+
+        .cta-sub{font-size:10px;color:#444;margin-top:12px;text-align:center}
+
+        /* Social Proof */
+        .social{width:100%;max-width:360px;margin-top:24px;animation:fadeUp .7s ease-out .85s both}
+        .avatars-row{display:flex;justify-content:center;margin-bottom:8px}
+        .av{
+            width:32px;height:32px;border-radius:50%;border:2px solid #06060f;margin-left:-7px;
+            display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;
+        }
+        .av:nth-child(1){background:linear-gradient(135deg,#00d26a,#00aa55);margin-left:0}
+        .av:nth-child(2){background:linear-gradient(135deg,#0088cc,#0066aa)}
+        .av:nth-child(3){background:linear-gradient(135deg,#aa44ff,#8822cc)}
+        .av:nth-child(4){background:linear-gradient(135deg,#FFD700,#FF8C00)}
+        .av:nth-child(5){background:linear-gradient(135deg,#ff4488,#cc2266)}
+        .av:nth-child(6){background:#222;color:#888;font-size:10px}
+        .proof-text{font-size:11px;color:#555;text-align:center}
+        .proof-text strong{color:#00d26a}
+
+        /* Ticker */
+        .ticker-wrap{
+            position:fixed;bottom:0;left:0;width:100%;z-index:10;
+            background:rgba(6,6,15,0.95);border-top:1px solid rgba(255,255,255,0.05);padding:10px 0;overflow:hidden;
+        }
+        .ticker{display:flex;gap:36px;white-space:nowrap;animation:scroll 25s linear infinite}
+        .ticker span{font-size:12px;color:#666;display:inline-flex;align-items:center;gap:4px}
+        .ticker .g{color:#00d26a}.ticker .r{color:#ff4444}.ticker .b{color:#0088cc}.ticker .p{color:#aa44ff}.ticker .o{color:#FFD700}
+        @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+        /* Bottom Space */
+        .bot-space{height:60px}
+
+        /* Sticky Bar */
+        .sticky-bar{
+            position:fixed;bottom:0;left:0;right:0;z-index:100;
+            background:rgba(6,6,15,0.95);backdrop-filter:blur(20px);
+            border-top:1px solid rgba(255,255,255,0.05);padding:10px 16px;display:flex;justify-content:center;
+        }
+        .btn-sticky{
+            width:100%;max-width:360px;padding:13px;border-radius:12px;border:none;cursor:pointer;
+            background:linear-gradient(135deg,#00b858,#009944);
+            color:#fff;font-size:14px;font-weight:700;
+            display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;
+            box-shadow:0 0 18px rgba(0,210,106,0.3);
+        }
+        .btn-sticky:active{transform:scale(.98)}
+        .btn-sticky svg{width:18px;height:18px;fill:#fff}
+
+        /* Scrollbar */
+        ::-webkit-scrollbar{width:3px}
+        ::-webkit-scrollbar-track{background:#06060f}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(#00d26a,#0088cc);border-radius:3px}
+        ::selection{background:rgba(0,210,106,0.3);color:#fff}
+
+        /* Responsive */
+        @media(max-width:360px){
+            h1{font-size:26px}
+            .price-row .amt{font-size:36px}
+            .btn-main{font-size:14px;padding:14px 18px}
+        }
+        @media(min-width:480px){
+            .features{gap:10px}
+            .feature{padding:16px 8px}
+            .feature .fi{font-size:26px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Facebook Pixel -->
+    <script>
+        !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init','YOUR_PIXEL_ID');
+        fbq('track','PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
+
+    <!-- BG -->
+    <div class="bg-layer"></div>
+    <div class="grid-bg"></div>
+    <div class="particles" id="particles"></div>
+
+    <div class="page">
+        <section class="hero">
+
+            <!-- Brand -->
+            <div class="brand">
+                <div class="brand-logo-box">
+                    <span class="brand-b">B</span>
+                    <span class="brand-hash">$$</span>
+                </div>
+                <div class="brand-name">BestPay</div>
+            </div>
+
+            <!-- USDT Coin -->
+            <div class="usdt-wrap">
+                <div class="usdt-coin">
+                    <svg viewBox="0 0 80 80" fill="none"><rect x="18" y="16" width="44" height="10" rx="5" fill="#fff"/><rect x="35" y="16" width="10" height="36" rx="5" fill="#fff"/><path d="M26 66c0 0 7-4 14-4s14 4 14 4" stroke="#fff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".35"/></svg>
+                </div>
+            </div>
+
+            <!-- Live -->
+            <div class="live-badge"><div class="live-dot"></div>LIVE PRICING</div>
+
+            <!-- Heading -->
+            <h1><span class="white">Trade </span><span class="green">USDT</span><br><span class="gold">BEST</span> <span class="white">Rates</span></h1>
+            <p class="sub">India's most trusted platform for USDT trading. Instant settlements, zero hassle.</p>
+
+            <!-- Price Card -->
+            <div class="price-card">
+                <div class="price-label">Today's USDT Rate</div>
+                <div class="price-row">
+                    <span class="cur">&#8377;</span>
+                    <span class="amt" id="price">110-125</span>
+                    <span class="unit">/ USDT</span>
+                </div>
+                <div class="price-note">
+                    <span class="price-change">&#9650; +2.4%</span>
+                    <span>Market demand rising</span>
+                </div>
+            </div>
+
+            <!-- Urgency -->
+            <div class="urgency">
+                <span class="fire">&#128293;</span>
+                <span class="text">Limited slots left &mdash; rates may change soon!</span>
+            </div>
+
+            <!-- Features -->
+            <div class="features">
+                <div class="feature"><span class="fi">&#9889;</span><span class="ft">Instant<br>Deposit</span></div>
+                <div class="feature"><span class="fi">&#128274;</span><span class="ft">Safe &<br>Secure</span></div>
+                <div class="feature"><span class="fi">&#128176;</span><span class="ft">Best<br>Rates</span></div>
+                <div class="feature"><span class="fi">&#128179;</span><span class="ft">UPI /<br>IMPS</span></div>
+                <div class="feature"><span class="fi">&#128230;</span><span class="ft">CDM<br>Deposit</span></div>
+                <div class="feature"><span class="fi">&#9878;</span><span class="ft">e-Rupee<br>Support</span></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-glow">
+                    <a href="https://t.me/+rlQIsxMDHm5hOTQ1" class="btn-main" id="join-btn" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        JOIN TELEGRAM NOW
+                    </a>
+                </div>
+                <a href="https://t.me/+rlQIsxMDHm5hOTQ1" class="btn-secondary" target="_blank" rel="noopener">
+                    &#128270; View Channel Preview
+                </a>
+                <div class="cta-sub">Free to join &bull; No hidden charges &bull; Instant updates</div>
+            </div>
+
+            <!-- Social Proof -->
+            <div class="social">
+                <div class="avatars-row">
+                    <div class="av">A</div>
+                    <div class="av">R</div>
+                    <div class="av">K</div>
+                    <div class="av">M</div>
+                    <div class="av">S</div>
+                    <div class="av">+5K</div>
+                </div>
+                <div class="proof-text"><strong>5,000+</strong> traders joined today &bull; <strong>4.9</strong> rating</div>
+            </div>
+        </section>
+        <div class="bot-space"></div>
+    </div>
+
+    <!-- Sticky Bar -->
+    <div class="sticky-bar">
+        <a href="https://t.me/+rlQIsxMDHm5hOTQ1" class="btn-sticky" id="sticky-btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            JOIN TELEGRAM &mdash; FREE
+        </a>
+    </div>
+
+    <script>
+        // Particles
+        (function(){
+            var el=document.getElementById('particles');
+            var colors=['rgba(0,210,106,0.35)','rgba(0,136,204,0.3)','rgba(170,68,255,0.25)','rgba(255,170,0,0.25)','rgba(255,50,80,0.2)','rgba(255,215,0,0.2)'];
+            for(var i=0;i<25;i++){
+                var p=document.createElement('div');
+                p.className='particle';
+                var s=2+Math.random()*3;
+                p.style.width=s+'px';p.style.height=s+'px';
+                p.style.left=Math.random()*100+'%';
+                p.style.background=colors[Math.floor(Math.random()*colors.length)];
+                p.style.animationDuration=(6+Math.random()*8)+'s';
+                p.style.animationDelay=Math.random()*8+'s';
+                el.appendChild(p);
+            }
+        })();
+
+        // FB Pixel
+        document.getElementById('join-btn').addEventListener('click',function(){fbq('track','Lead',{content_name:'Telegram Join - Hero',content_category:'USDT Trading'})});
+        document.getElementById('sticky-btn').addEventListener('click',function(){fbq('track','Lead',{content_name:'Telegram Join - Sticky',content_category:'USDT Trading'})});
+
+        // Price change animation
+        (function(){
+            var prices=['110-125','112-124','111-126','113-123'];
+            var idx=0;
+            setInterval(function(){
+                idx=(idx+1)%prices.length;
+                var el=document.getElementById('price');
+                el.style.opacity=0;
+                setTimeout(function(){el.textContent=prices[idx];el.style.opacity=1},200);
+            },4000);
+        })();
+    </script>
+
+</body>
+</html>
